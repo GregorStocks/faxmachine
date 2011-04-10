@@ -15,6 +15,7 @@ button#next {
     margin: 5px 8px 0 auto;
     font-family: Georgia, serif;
     border: 1px solid #ddd;
+    background: #f8f8f8;
 }
 p {
     font-family: Georgia, serif;

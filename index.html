@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Useless Facts</title>
+<title>Fax Machine</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
 <script>if ( typeof window.JSON === 'undefined' ) { document.write('<script src="history.js/scripts/compressed/json2.js"><\/script>'); }</script>
@@ -11,23 +11,36 @@
 <script>
 var curfact;
 function get_fact(factnum) {
-    var facts = ["Robots will one day destroy us all.",
+    var facts = ["",
+                 "Robots will one day destroy us all.",
                  "Iris recognition is pretty cool.",
                  "There really aren't enough facts here.",
                  "If you drink enough detergent, you will die."
                  ];
-    if(!factnum) {
-        var factnum = Math.floor(Math.random() * facts.length);
+    if(!factnum || factnum < 0 || factnum > facts.length) {
+        var factnum = Math.floor(1 + Math.random() * (facts.length - 1));
     }
     var fact = facts[factnum];
     curfact = factnum;
     return fact;
 }
-function nextfact() {
-    $("#fact").html(get_fact());
+function nextfact(factnum) {
+    $("#fact").html(get_fact(factnum));
+    if(factnum) {
+        window.location.replace("#" + curfact);
+    } else {
+        window.location="#" + curfact;
+    }
 } 
+window.onhashchange = function() {
+    var factnum = parseInt(window.location.hash.substring(1));
+    if(factnum != curfact) {
+        nextfact(factnum);
+    }
+}
 $(document).ready(function () {
-    nextfact();
+    var loc = window.location.hash.substring(1);
+    nextfact(parseInt(loc));
 });
 </script>
 </head>
@@ -35,7 +48,6 @@ $(document).ready(function () {
 <div class="outer">
     <div class="fact"><p id="fact">
     </p></div>
-    <p class="link">Link</p>
     <button id="next" type="button" onclick="nextfact()">Next fact</button>
 </div>
 </body>
