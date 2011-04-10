@@ -15,6 +15,12 @@
         <p style="display:none" id="morefact"></p>
     </div>
     <button id="next" type="button" onclick="get_fact()">Next fact</button>
+<?php
+require_once('facebook.php');
+require_once('config.php');
+$facebook = make_facebook();
+$facebook = new Facebook(array(
+    'appId' => 
 </div>
 </body>
 </html>
