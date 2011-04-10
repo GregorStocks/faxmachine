@@ -1,10 +1,19 @@
 var curfactid;
 var knownfacts = {};
+function set_fact(factid, fact) {
+    $("#fact").html(fact[0]);
+    var tag = fact[1];
+    $("#tags").html("<a class='more' href='javascript:void(0)' onclick=\"javascript:more('" + tag + "')\">more " + tag + " facts</a> &nbsp; " +
+                    "<a class='less' href='javascript:void(0)' onclick=\"javascript:less('" + tag + "')\">less " + tag + " facts</a>")
+    curfactid = factid;
+    $("#morefact").html(fact[2]);
+    knownfacts[factid] = fact;
+}
 function get_fact(factid) {
     if(factid && factid in knownfacts) {
-        window.location.replace("#" + curfactid);
-        curfactid = factid;
-        return knownfacts[factid];
+        set_fact(factid, knownfacts[factid]);
+        window.location.replace("#" + factid);
+        return;
     }
     var url = 'fact.php?';
     if(factid) {
@@ -12,16 +21,15 @@ function get_fact(factid) {
     }
     // get a new fact, save its value, and return it, saving it as curfactid
     $.getJSON(url, function(data) {
-        for(var fact in data) {
-            $("#fact").html(data[fact][0]);
-            var tag = data[fact][1];
-            $("#tags").html("<a class='more' href='javascript:void(0)' onclick=\"javascript:more('" + tag + "')\">more " + tag + " facts</a> &nbsp; " +
-                            "<a class='less' href='javascript:void(0)' onclick=\"javascript:less('" + tag + "')\">less " + tag + " facts</a>")
-            curfactid = fact;
-            $("#morefact").html(data[fact][2]);
-            break;
+        for(var factid in data) {
+            set_fact(factid, data[factid]);
+            if(window.location.hash == "") {
+                window.location.replace("#" + factid);
+            } else {
+                window.location="#" + factid;
+            }
+            return;
         }
-        window.location="#" + curfactid;
     });
 }
 function more(tag) {
