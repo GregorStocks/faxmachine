@@ -8,6 +8,8 @@
 function get_fact() {
     var facts = ["Robots will one day destroy us all.",
                  "Iris recognition is pretty cool.",
+                 "There really aren't enough facts here.",
+                 "If you drink enough detergent, you will die."
                  ];
     var fact = facts[Math.floor(Math.random() * facts.length)];
     return fact;
@@ -24,7 +26,7 @@ $(document).ready(function () {
 <div class="outer">
     <div class="fact"><p id="fact">
     </p></div>
-    <button id="next" type="button" onclick="nextfact()">Next</button>
+    <button id="next" type="button" onclick="nextfact()">Next fact</button>
 </div>
 </body>
 </html>
