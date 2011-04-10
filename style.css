@@ -19,6 +19,7 @@ button#next {
     margin: 5px 8px 0 auto;
     border: 1px solid #ddd;
     background: #f0f0f0;
+    font-size: medium;
 }
 p, span, button {
     font-family: Georgia, serif;

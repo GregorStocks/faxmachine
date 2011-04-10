@@ -17,6 +17,11 @@ if(isset($_REQUEST['factid'])) {
         $factid = array_rand($allfacts);
     }
 }
+if(isset($_REQUEST['curfactid'])) {
+    for($i = 0; $i < 100 && $factid == (int)$_REQUEST['curfactid']; $i++) {
+        $factid = array_rand($allfacts);
+    }
+}
 
 $facts = array();
 for($i = 0; $i < $numfacts; $i++) {

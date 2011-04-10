@@ -6,8 +6,15 @@ function get_fact(factid) {
         curfactid = factid;
         return knownfacts[factid];
     }
+    var url = 'fact.php?';
+    if(factid) {
+        url = url + "&factid=" + factid;
+    }
+    if(curfactid) {
+        url = url + "&curfact=" + curfactid;
+    }
     // get a new fact, save its value, and return it, saving it as curfactid
-    $.getJSON('fact.php?factid=' + factid, function(data) {
+    $.getJSON(url, function(data) {
         for(var fact in data) {
             $("#fact").html(data[fact][0]);
             var tag = data[fact][1];
