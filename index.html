@@ -4,14 +4,23 @@
 <title>Useless Facts</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript">
-function get_fact() {
+<script>if ( typeof window.JSON === 'undefined' ) { document.write('<script src="history.js/scripts/compressed/json2.js"><\/script>'); }</script>
+<script src="history.js/scripts/compressed/history.adapter.jquery.js"></script>
+<script src="history.js/scripts/compressed/history.js"></script>
+<script src="history.js/scripts/compressed/history.html4.js"></script>
+<script>
+var curfact;
+function get_fact(factnum) {
     var facts = ["Robots will one day destroy us all.",
                  "Iris recognition is pretty cool.",
                  "There really aren't enough facts here.",
                  "If you drink enough detergent, you will die."
                  ];
-    var fact = facts[Math.floor(Math.random() * facts.length)];
+    if(!factnum) {
+        var factnum = Math.floor(Math.random() * facts.length);
+    }
+    var fact = facts[factnum];
+    curfact = factnum;
     return fact;
 }
 function nextfact() {
@@ -26,6 +35,7 @@ $(document).ready(function () {
 <div class="outer">
     <div class="fact"><p id="fact">
     </p></div>
+    <p class="link">Link</p>
     <button id="next" type="button" onclick="nextfact()">Next fact</button>
 </div>
 </body>
