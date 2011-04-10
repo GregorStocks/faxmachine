@@ -7,7 +7,7 @@ div.fact {
 }
 .fact #fact {
     margin: 4px;
-    font-size: large;
+    font-size: x-large;
 }
 div.outer {
     margin-left: auto;
@@ -41,4 +41,5 @@ p, span, button {
 }
 #morefact {
     margin-bottom:1px;
+    margin-top: 1px;
 }
