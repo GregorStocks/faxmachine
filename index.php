@@ -3,8 +3,14 @@
 <title>Useless Facts</title>
 </head>
 <body>
-<p>
-Robots will one day destroy us all.
-</p>
+<?php
+function get_fact() {
+    return "Robots will one day destroy us all.";
+}
+
+for($i = 0; $i < 5; $i++) {
+    ?><p><?=get_fact()?></p><?php
+}
+?>
 </body>
 </html>
