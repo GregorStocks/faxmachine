@@ -1,4 +1,21 @@
 div.fact {
     border: 1px solid #ddd;
-    background: #f8f8f8
+    background: #f8f8f8;
+    width: 500px;
+    padding: 5px;
+    text-align: center;
 }
+div.outer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 520px;
+    text-align: right;
+}
+button#next {
+    margin: 5px 10px 0 auto;
+    font-family: Georgia, serif;
+}
+p {
+    font-family: Georgia, serif;
+}
+
