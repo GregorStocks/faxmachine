@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Fax Machine</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="stylesheet" href="style.css" type="text/css" />
-<script src="jquery.js"></script>
-<script src="fact.js"></script>
+    <meta charset="UTF-8">
+    <title>Fax Machine</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="jquery.js"></script>
+    <script src="fact.js"></script>
 </head>
 <body>
 <div class="outer">

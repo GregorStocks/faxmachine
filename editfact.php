@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Edit Fact</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 </head>
 <body>
 <?php if(isset($_REQUEST['factid'])) {
