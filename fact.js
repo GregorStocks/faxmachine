@@ -1,33 +1,27 @@
-var curfact;
-function get_fact(factnum) {
-    var facts = ["",
-                 "Robots will one day destroy us all.",
-                 "Iris recognition is pretty cool.",
-                 "There really aren't enough facts here.",
-                 "If you drink enough detergent, you will die."
-                 ];
-    if(!factnum || factnum < 0 || factnum > facts.length) {
-        var factnum = Math.floor(1 + Math.random() * (facts.length - 1));
+var curfactid;
+var knownfacts = {};
+function get_fact(factid) {
+    if(factid && factid in knownfacts) {
+        window.location.replace("#" + curfactid);
+        curfactid = factid;
+        return knownfacts[factid];
     }
-    var fact = facts[factnum];
-    curfact = factnum;
-    return fact;
+    // get a new fact, save its value, and return it, saving it as curfactid
+    $.getJSON('fact.php?factid=' + factid, function(data) {
+        for(var fact in data) {
+            $("#fact").html(data[fact]);
+            curfactid = fact;
+            break;
+        }
+        window.location="#" + curfactid;
+    });
 }
-function nextfact(factnum) {
-    $("#fact").html(get_fact(factnum));
-    if(factnum) {
-        window.location.replace("#" + curfact);
-    } else {
-        window.location="#" + curfact;
-    }
-} 
 window.onhashchange = function() {
-    var factnum = parseInt(window.location.hash.substring(1));
-    if(factnum != curfact) {
-        nextfact(factnum);
+    var factid = window.location.hash.substring(1);
+    if(factid != curfactid) {
+        get_fact(factid);
     }
 }
 $(document).ready(function () {
-    var loc = window.location.hash.substring(1);
-    nextfact(parseInt(loc));
+    get_fact(window.location.hash.substring(1));
 });
