@@ -5,7 +5,7 @@ div.fact {
     padding: 5px;
     text-align: center;
 }
-.fact p {
+.fact #fact {
     margin: 4px;
     font-size: large;
 }
@@ -39,4 +39,6 @@ p, span, button {
     text-align: right;
     float: right;
 }
-
+#morefact {
+    margin-bottom:1px;
+}

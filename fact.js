@@ -1,6 +1,5 @@
 var curfactid;
 var knownfacts = {};
-var morefact;
 function get_fact(factid) {
     if(factid && factid in knownfacts) {
         window.location.replace("#" + curfactid);
@@ -19,7 +18,7 @@ function get_fact(factid) {
             $("#tags").html("<a class='more' href='javascript:void(0)' onclick=\"javascript:more('" + tag + "')\">more " + tag + " facts</a> &nbsp; " +
                             "<a class='less' href='javascript:void(0)' onclick=\"javascript:less('" + tag + "')\">less " + tag + " facts</a>")
             curfactid = fact;
-            morefact = data[fact][2];
+            $("#morefact").html(data[fact][2]);
             break;
         }
         window.location="#" + curfactid;
@@ -32,13 +31,11 @@ function less(tag) {
     return false;
 }
 function tellmemore(more) {
-    $("#tell").html('<a href="javascript:void(0)" onclick="javascript:tellmemore(' + !more + ')">tell me ' + (more ? "less" : "more") + '...</a>');
+    $("#tell").html('<a href="javascript:void(0)" onclick="javascript:tellmemore(' + !more + ')">tell me ' + (more ? "less!" : "more...") + '</a>');
     if(more) {
-        // tell me more!
-        $("#morefact").html(morefact);
+        $("#morefact").slideDown();
     } else {
-        // tell me less!
-        $("#morefact").html("");
+        $("#morefact").slideUp();
     }
     return false;
 }
