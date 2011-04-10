@@ -1,9 +1,13 @@
 div.fact {
     border: 1px solid #ddd;
-    background: #f8f8f8;
+    background: #f0f0f0;
     width: 500px;
     padding: 5px;
     text-align: center;
+}
+.fact p {
+    margin: 4px;
+    font-size: large;
 }
 div.outer {
     margin-left: auto;
@@ -13,11 +17,45 @@ div.outer {
 }
 button#next {
     margin: 5px 8px 0 auto;
-    font-family: Georgia, serif;
     border: 1px solid #ddd;
-    background: #f8f8f8;
+    background: #f0f0f0;
 }
-p {
+p, span, button {
     font-family: Georgia, serif;
+}
+#tags {
+    font-size: small;
+    text-align: left;
+    margin-bottom: 0;
+    float: left;
+}
+#tags .more:link {
+    color: #888;
+}
+#tags .more:active {
+    color: #888;
+}
+#tags .more:visited {
+    color: #888;
+}
+#tags .more:hover {
+    color: #888;
+}
+#tags .less:link {
+    color: #888;
+}
+#tags .less:active {
+    color: #888;
+}
+#tags .less:visited {
+    color: #888;
+}
+#tags .less:hover {
+    color: #888;
+}
+#tell {
+    font-size: small;
+    text-align: right;
+    float: right;
 }
 
