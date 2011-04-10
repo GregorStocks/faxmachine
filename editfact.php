@@ -1,7 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Edit Fact</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 </head>
 <body>
 <?php if(isset($_REQUEST['factid'])) {
@@ -16,11 +17,11 @@
         $stmt->bind_result($fact, $tag, $more);
         if($stmt->fetch()) {
             ?>
-            <form name="form" method="post" action="<?=$_SERVER['PHP_SELF']?>">
-            <input type="hidden" name="editfactid" value="<?=$_REQUEST['factid']?>"/>
-            <p>Fact: <input type="text" name="fact" size=80 value="<?=$fact?>"/></p>
-            <p>Tag: <input type="text" name="tag" value="<?=$tag?>"/></p>
-            <p>More: <textarea rows=4 cols=80 name="more"><?=$more?></textarea></p>
+            <form name="form" method="post" action="<?= $_SERVER['PHP_SELF']?>">
+            <input type="hidden" name="editfactid" value="<?= $_REQUEST['factid'] ?>"/>
+            <p>Fact: <input type="text" name="fact" size=80 value="<?= htmlspecialchars($fact) ?>"/></p>
+            <p>Tag: <input type="text" name="tag" value="<?= htmlspecialchars($tag) ?>"/></p>
+            <p>More: <textarea rows=4 cols=80 name="more"><?= $more ?></textarea></p>
             <p><input type="submit" /></p>
             </form>
             <?php
@@ -61,9 +62,9 @@
         while($stmt->fetch()) {
             ?>
             <tr>
-                <td><a href="<?= $_SERVER['PHP_SELF'] . "?factid=" . $id ?>"><?=$fact?></a></td>
-                <td><?=$tag?></td>
-                <td><?=$more?></td>
+                <td><a href="<?= $_SERVER['PHP_SELF'] . "?factid=" . $id ?>"><?= $fact ?></a></td>
+                <td><?= $tag ?></td>
+                <td><?= $more ?></td>
             </tr>
             <?php
         }

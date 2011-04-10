@@ -1,7 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>New Fact</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 </head>
 <body>
 <?php if(isset($_REQUEST['fact'])) { ?>

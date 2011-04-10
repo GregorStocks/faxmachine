@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Fax Machine</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="style.css" type="text/css" />
-<script type="text/javascript" src="jquery.js"></script>
+<script src="jquery.js"></script>
 <script src="fact.js"></script>
 </head>
 <body>
