@@ -1,5 +1,6 @@
 var curfactid;
 var knownfacts = {};
+var morefact;
 function get_fact(factid) {
     if(factid && factid in knownfacts) {
         window.location.replace("#" + curfactid);
@@ -8,29 +9,38 @@ function get_fact(factid) {
     }
     var url = 'fact.php?';
     if(factid) {
-        url = url + "&factid=" + factid;
-    }
-    if(curfactid) {
-        url = url + "&curfactid=" + curfactid;
+        url = url + "factid=" + factid;
     }
     // get a new fact, save its value, and return it, saving it as curfactid
     $.getJSON(url, function(data) {
         for(var fact in data) {
             $("#fact").html(data[fact][0]);
             var tag = data[fact][1];
-            $("#tags").html("<a class='more' href='\"javascript:more('" + tag + "')\" onclick='return false'>more " + tag + "</a> &nbsp; " +
-                            "<a class='less' href='\"javascript:less('" + tag + "')\" onclick='return false'>less " + tag + "</a>")
+            $("#tags").html("<a class='more' href='javascript:void(0)' onclick=\"javascript:more('" + tag + "')\">more " + tag + " facts</a> &nbsp; " +
+                            "<a class='less' href='javascript:void(0)' onclick=\"javascript:less('" + tag + "')\">less " + tag + " facts</a>")
             curfactid = fact;
+            morefact = data[fact][2];
             break;
         }
         window.location="#" + curfactid;
     });
 }
 function more(tag) {
-    return true;
+    return false;
 }
 function less(tag) {
-    return true;
+    return false;
+}
+function tellmemore(more) {
+    $("#tell").html('<a href="javascript:void(0)" onclick="javascript:tellmemore(' + !more + ')">tell me ' + (more ? "less" : "more") + '...</a>');
+    if(more) {
+        // tell me more!
+        $("#morefact").html(morefact);
+    } else {
+        // tell me less!
+        $("#morefact").html("");
+    }
+    return false;
 }
 window.onhashchange = function() {
     var factid = window.location.hash.substring(1);

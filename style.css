@@ -30,29 +30,9 @@ p, span, button {
     margin-bottom: 0;
     float: left;
 }
-#tags .more:link {
+#tags a {
     color: #888;
-}
-#tags .more:active {
-    color: #888;
-}
-#tags .more:visited {
-    color: #888;
-}
-#tags .more:hover {
-    color: #888;
-}
-#tags .less:link {
-    color: #888;
-}
-#tags .less:active {
-    color: #888;
-}
-#tags .less:visited {
-    color: #888;
-}
-#tags .less:hover {
-    color: #888;
+    text-decoration:underline;
 }
 #tell {
     font-size: small;
