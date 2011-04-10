@@ -11,7 +11,7 @@ function get_fact(factid) {
         url = url + "&factid=" + factid;
     }
     if(curfactid) {
-        url = url + "&curfact=" + curfactid;
+        url = url + "&curfactid=" + curfactid;
     }
     // get a new fact, save its value, and return it, saving it as curfactid
     $.getJSON(url, function(data) {
