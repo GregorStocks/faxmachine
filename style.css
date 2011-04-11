@@ -15,7 +15,7 @@ div.outer {
     width: 520px;
     text-align: right;
 }
-button#next {
+button {
     margin: 5px 8px 0 auto;
     border: 1px solid #ddd;
     background: #f0f0f0;
@@ -23,16 +23,6 @@ button#next {
 }
 p, span, button {
     font-family: Georgia, serif;
-}
-#tags {
-    font-size: small;
-    text-align: left;
-    margin-bottom: 0;
-    float: left;
-}
-#tags a {
-    color: #888;
-    text-decoration:underline;
 }
 #tell {
     font-size: small;

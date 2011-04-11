@@ -15,7 +15,9 @@
         <span id="tell"><a href="javascript:void(0)" onclick="javascript:tellmemore(true)">tell me more...</a></span>
         <div style="clear:both;"></div>
     </div>
-    <button id="next" type="button" onclick="get_fact()">Next fact</button>
+    <button id="yup" type="button" onclick="get_fact()">duh.</button>
+    <button id="so" type="button" onclick="get_fact()">and?</button>
+    <button id="cool" type="button" onclick="get_fact()">rad!</button>
 </div>
 </body>
 </html>

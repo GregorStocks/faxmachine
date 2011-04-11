@@ -5,7 +5,8 @@
     <title>Edit Fact</title>
 </head>
 <body>
-<?php if(isset($_REQUEST['factid'])) {
+<?php
+if(isset($_REQUEST['factid'])) {
     require_once("config.php");
     $mysqli = get_connection();
     if(!$mysqli) {
@@ -29,18 +30,17 @@
         $stmt->close();
     }
     $mysqli->close();
-} else {
+}else {
+    require_once("config.php");
+    $mysqli = get_connection();
+    if(!$mysqli) {
+        die('DATABASE FAILURE OF SOME SORT');
+    }
     if(isset($_REQUEST['editfactid'])) {
         $id = $_REQUEST['editfactid'];
         $fact = $_REQUEST['fact'];
         $tag = $_REQUEST['tag'];
         $more = $_REQUEST['more'];
-
-        require_once("config.php");
-        $mysqli = get_connection();
-        if(!$mysqli) {
-            die('DATABASE FAILURE OF SOME SORT');
-        }
         if($stmt = $mysqli->prepare("UPDATE fact SET fact = ?, tag = ?, more = ? WHERE id = ?")) {
             $stmt->bind_param("sssi", $fact, $tag, $more, $id);
             $stmt->execute();
@@ -48,12 +48,15 @@
         } else {
             echo $mysqli->error;
         }
-        $mysqli->close();
-    }
-    require_once("config.php");
-    $mysqli = get_connection();
-    if(!$mysqli) {
-        die('DATABASE FAILURE OF SOME SORT');
+    } else if(isset($_REQUEST['delete'])) {
+        if($stmt = $mysqli->prepare("DELETE FROM fact WHERE id = ?")) {
+            $stmt->bind_param("i", $_REQUEST['delete']);
+            $stmt->execute();
+            echo "<p>Fact deleted! (if it was a fact at all...)</p>";
+            $stmt->close();
+        } else {
+            echo $mysqli->error;
+        }
     }
     if($stmt = $mysqli->prepare("SELECT id, fact, tag, more FROM fact")) {
         $stmt->execute();
@@ -65,6 +68,7 @@
                 <td><a href="<?= $_SERVER['PHP_SELF'] . "?factid=" . $id ?>"><?= $fact ?></a></td>
                 <td><?= $tag ?></td>
                 <td><?= $more ?></td>
+                <td><a href="<?= $_SERVER['PHP_SELF'] . "?delete=" . $id ?>">Delete</a></td>
             </tr>
             <?php
         }
