@@ -2,9 +2,6 @@ var curfactid;
 var knownfacts = {};
 function set_fact(factid, fact) {
     $("#fact").html(fact[0]);
-    var tag = fact[1];
-    $("#tags").html("<a class='more' href='javascript:void(0)' onclick=\"javascript:more('" + tag + "')\">more " + tag + " facts</a> &nbsp; " +
-                    "<a class='less' href='javascript:void(0)' onclick=\"javascript:less('" + tag + "')\">less " + tag + " facts</a>")
     curfactid = factid;
     $("#morefact").html(fact[2]);
     knownfacts[factid] = fact;
@@ -31,12 +28,6 @@ function get_fact(factid) {
             return;
         }
     });
-}
-function more(tag) {
-    return false;
-}
-function less(tag) {
-    return false;
 }
 function tellmemore(more) {
     $("#tell").html('<a href="javascript:void(0)" onclick="javascript:tellmemore(' + !more + ')">tell me ' + (more ? "less!" : "more...") + '</a>');
