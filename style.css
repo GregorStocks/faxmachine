@@ -10,16 +10,23 @@ div.fact {
     font-size: x-large;
 }
 div.outer {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
     width: 520px;
     text-align: right;
 }
 button {
     margin: 5px 8px 0 auto;
     border: 1px solid #ddd;
-    background: #f0f0f0;
     font-size: medium;
+}
+#duh {
+    background: #fee;
+}
+#so {
+    background: #eee;
+}
+#rad {
+    background: #efe;
 }
 p, span, button {
     font-family: Georgia, serif;
